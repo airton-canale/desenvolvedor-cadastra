@@ -12,7 +12,7 @@ import MobileOrderingTab from "@/components/MobileOrderingTab";
 import MobileSidebar from "@/components/MobileSidebar";
 import ShoppingCart from "@/components/ShoppingCart";
 import useLocalStorage from "@/reusable/hooks/useLocalStorage";
-import { instance } from "@/reusable/api";
+import instance from "@/reusable/api";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -76,6 +76,7 @@ export default function Home() {
     const { data } = await instance({
       url: "/products",
     });
+    console.log(data)
     setProducts(data);
     setLoading(false);
   };
