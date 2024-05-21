@@ -48,7 +48,7 @@ const Sidebar = ({ products, onFilter, filters, filterOpen, closeFilter }) => {
       </div>
       <div className="flex flex-col gap-4 w-full">
         <h4 className="text-lg">TAMANHOS</h4>
-        <SizeSelect sizes={sizes} selectedSize={filters.size} />
+        <SizeSelect sizes={sizes} selectedSize={filters.size} onFilter={onFilter}  />
 
         <h4 className="text-lg">FAIXA DE PREÇO</h4>
           <CheckboxGroup

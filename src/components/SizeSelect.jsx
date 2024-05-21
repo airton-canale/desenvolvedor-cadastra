@@ -1,4 +1,4 @@
-const SizeSelect = ({ sizes, selectedSize }) =>
+const SizeSelect = ({ sizes, selectedSize, onFilter }) =>
     <div className="flex flex-wrap w-[80%] gap-2">
        {
         sizes.map((size) => (
