@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 
-const DropdownMenu = ({ content, title }) => {
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ content, title }) => {
     const [tabOpen, setTabOpen] = useState(false);
     return (
       <>

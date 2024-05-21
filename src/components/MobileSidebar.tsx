@@ -1,12 +1,11 @@
-import { useMemo, useState } from "react";
-import { AiOutlineClose, AiOutlineDown, AiOutlineUp } from "react-icons/ai";
-import CheckboxWithLabel from "./Checkbox";
+import { useMemo } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 import Button from "./Button";
 import DropdownMenu from "./DropdownMenu";
 import CheckboxGroup from "./CheckboxGroup";
 import { priceRangeOptions } from "@/reusable/options";
 
-const MobileSidebar = ({
+const MobileSidebar: React.FC<MobileSidebarProps> = ({
   products,
   onFilter,
   filters,

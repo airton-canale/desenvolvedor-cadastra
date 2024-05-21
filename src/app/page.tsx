@@ -15,17 +15,17 @@ import useLocalStorage from "@/reusable/hooks/useLocalStorage";
 import { instance } from "@/reusable/api";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-  const [filters, setFilters] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [showMore, setShowMore] = useState(false);
-  const [selectedOrdering, setSelectedOrdering] = useState(null);
-  const [filterOpen, setFilterOpen] = useState(false);
-  const [orderingOpen, setOrderingOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filters, setFilters] = useState<Filters>({});
+  const [loading, setLoading] = useState<boolean>(true);
+  const [showMore, setShowMore] = useState<boolean>(false);
+  const [selectedOrdering, setSelectedOrdering] = useState<string | null>(null);
+  const [filterOpen, setFilterOpen] = useState<boolean>(false);
+  const [orderingOpen, setOrderingOpen] = useState<boolean>(false);
+  const [cartOpen, setCartOpen] = useState<boolean>(false);
   const [cartProducts, setCartProducts] = useLocalStorage("products", []);
 
-  const handleSort = (a, b) => {
+  const handleSort = (a: Product, b: Product): number => {
     if (selectedOrdering === "recents") {
       return moment(b.date).unix() - moment(a.date).unix();
     }
@@ -35,6 +35,8 @@ export default function Home() {
     if (selectedOrdering === "biggest") {
       return b.price - a.price;
     }
+
+    return 0;
   };
 
   const priceFilter = [
@@ -46,14 +48,16 @@ export default function Home() {
   ];
 
   const checkFilter =
-    (prod) =>
-    ([property, value]) => {
+    (prod: Product) =>
+    ([property, value]: [string, string | number | null]) => {
       if (property === "color") return prod[property] === value;
-      if (property === "size") return prod[property].includes(value);
+      if (property === "size") return prod[property].includes(value as string);
       if (property === "price") {
-        const { x, y } = priceFilter[value - 1];
+        const { x, y } = priceFilter[(value as number) - 1];
         return prod.price >= x && prod.price <= y;
       }
+
+      return false;
     };
 
   const filteredProducts = useMemo(
@@ -70,23 +74,20 @@ export default function Home() {
 
   const fetchProducts = async () => {
     const { data } = await instance({
-      url: '/products'
-    })
+      url: "/products",
+    });
     setProducts(data);
     setLoading(false);
-    console.log("response:", data);
   };
 
-  const handleFilter = (property, value) => {
+  const handleFilter = (property: keyof Filters, value: string | number | null | undefined) => {
     setFilters((prev) => ({
       ...prev,
       [property]: prev[property] === value ? null : value,
     }));
-
-    console.log("filters: ", filters);
   };
 
-  const handleOrdering = (event) => {
+  const handleOrdering = (event: string) => {
     setSelectedOrdering(event);
   };
 
@@ -104,8 +105,8 @@ export default function Home() {
         <ListHeader
           onFilterClick={() => setFilterOpen(true)}
           onOrderClick={() => setOrderingOpen(true)}
-          onChange={(e) => handleOrdering(e.value)}
-          option={selectedOrdering}
+          onChange={(e) => handleOrdering(e.value as keyof Filters)}
+          selectedOrdering={selectedOrdering}
         />
         <Layout>
           <Sidebar
@@ -134,7 +135,9 @@ export default function Home() {
               <Card
                 key={product.id}
                 {...product}
-                onClick={() => setCartProducts((prev) => [...prev, product])}
+                onClick={() =>
+                  setCartProducts((prev: Product[]) => [...prev, product])
+                }
               />
             ))}
             {filteredProducts.length === 0 && !loading && (
@@ -158,7 +161,12 @@ export default function Home() {
                 </div>
               )}
           </div>
-          <ShoppingCart cartOpen={cartOpen} setCartOpen={setCartOpen} selectedProducts={cartProducts} setCartProducts={setCartProducts} />
+          <ShoppingCart
+            cartOpen={cartOpen}
+            setCartOpen={setCartOpen}
+            selectedProducts={cartProducts}
+            setCartProducts={setCartProducts}
+          />
         </Layout>
       </div>
       {!loading && <Footer />}

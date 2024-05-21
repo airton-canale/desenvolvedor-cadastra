@@ -1,6 +1,6 @@
 import { PiHandbagSimpleFill } from "react-icons/pi";
 
-const Header = ({ cartProducts, onCartClick }) => {
+const Header: React.FC<HeaderProps> = ({ cartProducts, onCartClick }) => {
 
   return (
     <div className="p-3 w-full border-b-2 border-cadastra-gray flex justify-between lg:px-28 px-6 items-center">

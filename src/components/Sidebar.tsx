@@ -1,20 +1,27 @@
 import { useMemo, useState } from "react";
 import { AiOutlineUp, AiOutlineDown, AiOutlineClose } from "react-icons/ai";
 import CheckboxGroup from "./CheckboxGroup";
-import SizeSelect from "./SizeSelect"
+import SizeSelect from "./SizeSelect";
 import { priceRangeOptions } from "@/reusable/options";
 
-const Sidebar = ({ products, onFilter, filters, filterOpen, closeFilter }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  products,
+  onFilter,
+  filters,
+  closeFilter,
+}) => {
   const [seeMore, setSeeMore] = useState(false);
   const colors = useMemo(
-    () => [...new Set(products.map(({ color }) => color))].map((color) => ({
-      label: color, value: color
-    })),
+    () =>
+      [...new Set(products.map(({ color }) => color))].map((color) => ({
+        label: color,
+        value: color,
+      })),
     [products]
   );
 
   const sizes = useMemo(
-    () => [...new Set(products.flatMap(({ size }) => size))],
+    () => [...new Set(products.flatMap(({ size }) => size))].filter(Boolean),
     [products]
   );
 
@@ -24,11 +31,11 @@ const Sidebar = ({ products, onFilter, filters, filterOpen, closeFilter }) => {
     >
       <div className="flex flex-col gap-4">
         <h4 className="text-lg">CORES</h4>
-          <CheckboxGroup
-           options={colors.slice(0, !seeMore ? 5 : 999)}
-           value={filters.color}
-           onChange={(value) => onFilter("color", value)}
-          />
+        <CheckboxGroup
+          options={colors.slice(0, !seeMore ? 5 : 999)}
+          value={filters.color}
+          onChange={(value) => onFilter("color", value)}
+        />
         <div
           onClick={() => {
             setSeeMore((prev) => !prev);
@@ -44,18 +51,27 @@ const Sidebar = ({ products, onFilter, filters, filterOpen, closeFilter }) => {
             )}
           </span>
         </div>
-        <button className="absolute top-8 right-8 block lg:hidden" onClick={closeFilter}><AiOutlineClose /></button>
+        <button
+          className="absolute top-8 right-8 block lg:hidden"
+          onClick={closeFilter}
+        >
+          <AiOutlineClose />
+        </button>
       </div>
       <div className="flex flex-col gap-4 w-full">
         <h4 className="text-lg">TAMANHOS</h4>
-        <SizeSelect sizes={sizes} selectedSize={filters.size} onFilter={onFilter}  />
+        <SizeSelect
+          sizes={sizes}
+          selectedSize={filters.size}
+          onFilter={onFilter}
+        />
 
         <h4 className="text-lg">FAIXA DE PREÇO</h4>
-          <CheckboxGroup
-            options={priceRangeOptions}
-            value={filters.price}
-            onChange={(value) => onFilter("price", value)}
-          />
+        <CheckboxGroup
+          options={priceRangeOptions}
+          value={filters.price}
+          onChange={(value) => onFilter("price", value)}
+        />
       </div>
     </div>
   );

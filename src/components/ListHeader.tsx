@@ -1,20 +1,20 @@
-import Select from "react-select";
+import Select, { Options } from "react-select";
 import Button from "./Button";
 import { priceOptions } from "@/reusable/options";
 import {  customStyles  } from "@/reusable/selectStyle";
 
 
-const ListHeader = ({ onChange, option, onOrderClick, onFilterClick }) => {
+const ListHeader: React.FC<ListHeaderProps> = ({ onChange, selectedOrdering, onOrderClick, onFilterClick }) => {
 
   return (
     <>
     <div className="w-full lg:flex hidden justify-between py-8 px-28">
       <h1 className="text-2xl">Blusas</h1>
       <Select
-        value={option}
-        onChange={onChange}
-        options={priceOptions}
-        placeholder={priceOptions.find(opt => opt.value === option)?.label || <span>Ordenar por:</span>}
+        value={selectedOrdering}
+        onChange={onChange as any}
+        options={priceOptions as any}
+        placeholder={priceOptions.find(opt => opt.value === selectedOrdering)?.label || <span>Ordenar por:</span>}
         styles={customStyles}
       />
     </div>

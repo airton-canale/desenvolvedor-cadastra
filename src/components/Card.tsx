@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-const Card = ({ image, name, parcelamento, price, onClick }) => {
+const Card: React.FC<CardProps>  = ({ image, name, parcelamento, price, onClick }) => {
   return (
     <div className="flex flex-col items-center lg:max-w-[30%] min-w-20 ">
       <img src={image} alt="image" className="w-full"/>
