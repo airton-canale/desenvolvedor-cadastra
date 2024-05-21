@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'cadastra-orange': '#FB953E',
+        'cadastra-gray': '#C7C7C7',
+        'cadastra-gray-dark': '#808080'
+      },
     },
   },
   plugins: [],
