@@ -13,6 +13,9 @@ const config: Config = {
         'cadastra-gray': '#C7C7C7',
         'cadastra-gray-dark': '#808080'
       },
+      screens: {
+        'xs': '430px',
+      },
     },
   },
   plugins: [],
