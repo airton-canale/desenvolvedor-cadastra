@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 const useLocalStorage = (key, defaultValue) => {
+	if(typeof window === 'undefined') return
 	const [localStorageValue, setLocalStorageValue] = useState(() => {
 		try {
 			const value = localStorage.getItem(key)
