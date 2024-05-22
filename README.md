@@ -19,9 +19,9 @@
 
 Optei por utilizar Tailwind CSS ao invés de Less ou Sass como um fator positivo, para mostrar mais uma tecnologia que tenho habilidade, tendo em vista que o Tailwind tem uma maior dificuldade e não se encaixa nas bibiliotecas que fornecem componentes com layout prontos que não eram permitido usar como Bootstrap, Foundation Css, Semantic ui ou semelhantes;
 
-Além disso, criei um hook personalizado chamado useLocalStorage para gerenciar dados armazenados localmente no navegador, para as compras não saem do carrinho se a página for recarregada.
+Além disso, criei um hook personalizado chamado useLocalStorage para gerenciar dados armazenados localmente no navegador, para as compras não saírem do carrinho se a página for recarregada.
 
-Adicional: Fiz o deploy da aplicação, para demonstrar mais uma habilidade e p Carrinho de compras funcional, pode ser testado ao clicar no icone de bolsa, no header da aplicação, como mostra no exemplo abaixo.
+Adicional: Fiz o deploy da aplicação, para demonstrar mais uma habilidade e o Carrinho de compras funcional, pode ser testado ao clicar no icone de bolsa, no header da aplicação, como mostra no exemplo abaixo.
 </p>
 
 <br>
@@ -39,7 +39,7 @@ Adicional: Fiz o deploy da aplicação, para demonstrar mais uma habilidade e p 
 
 ## Instalação
 
-- Importante: Você deve ter instalado o Next.js e o Git
+- Importante: Você deve ter instalado o NodeJS e o Git
 
 ```bash
 # clonar o repositório
