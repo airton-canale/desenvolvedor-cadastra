@@ -26,7 +26,7 @@ Adicional: Fiz o deploy da aplicação, para demonstrar mais uma habilidade e p 
 
 <br>
 
-<img src="/public/readme.gif" alt="Readme Gif">
+<img src="./src/public/readme-assets/cadastra-gif.gif" alt="Readme Gif">
 <br>
 <br>
 
