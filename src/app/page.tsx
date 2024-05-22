@@ -76,7 +76,7 @@ export default function Home() {
     const { data } = await instance({
       url: "/products",
     });
-    console.log(data)
+
     setProducts(data);
     setLoading(false);
   };
