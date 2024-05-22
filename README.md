@@ -22,6 +22,8 @@ Optei por utilizar Tailwind CSS ao invés de Less ou Sass como um fator positivo
 Além disso, criei um hook personalizado chamado useLocalStorage para gerenciar dados armazenados localmente no navegador, para as compras não saírem do carrinho se a página for recarregada.
 
 Adicional: Fiz o deploy da aplicação, para demonstrar mais uma habilidade e o Carrinho de compras funcional, pode ser testado ao clicar no icone de bolsa, no header da aplicação, como mostra no exemplo abaixo.
+
+Email: airtonluizcanalefilho@hotmail.com
 </p>
 
 <br>
